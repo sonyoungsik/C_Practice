@@ -1,0 +1,115 @@
+#include <stdio.h>
+
+int main(){
+	
+	const float RATE_USD = 1233.1, RATE_JAPAN = 986.52, RATE_EUROPE = 1343.03, RATE_CHINA = 193.18, RATE_POUND = 1605.42;
+	int inputWon = 0;
+	int choice = 0;
+	int returnWon = 0;
+	float outputMoney = 0;
+	float exchangeRate = 0;
+	int outputMoneyFinal = 0;
+	
+	printf("환전을 원하는 원화 금액을 입력하세요(원화) : ");
+	scanf("%d", &inputWon);
+	
+	printf("환전을 원하는 외화를 선택하세요 (1:USD, 2:YEN, 3:EURO, 4:RMB, 5:GBP) : ");
+	scanf("%d", &choice);
+	
+	switch (choice) {
+		case 1:
+			exchangeRate = RATE_USD;
+			break;
+		case 2:
+			exchangeRate = RATE_JAPAN;
+			break;
+		case 3:
+			exchangeRate = RATE_EUROPE;
+			break;
+		case 4:
+			exchangeRate = RATE_CHINA;
+			break;
+		case 5:
+			exchangeRate = RATE_POUND;
+			break;
+	}
+
+	if (choice == 1) {
+		
+		outputMoney = inputWon / exchangeRate;
+		outputMoneyFinal = outputMoney;
+		returnWon = outputMoney * 100;
+		returnWon = returnWon % 100;
+		returnWon = returnWon * exchangeRate / 100;
+		returnWon = returnWon / 10 * 10;
+		printf("기준 환율 : %.2f\n", exchangeRate);
+		printf("환전 결과\n");
+		printf("달러 : %d\n", outputMoneyFinal);
+		printf("거스름돈: %d\n", returnWon);
+	
+	}else if (choice == 2){
+			
+		outputMoney = inputWon / exchangeRate;
+		outputMoneyFinal = outputMoney;
+		returnWon = outputMoney * 100;
+		returnWon = returnWon % 100;
+		returnWon = returnWon * exchangeRate / 100;
+		returnWon = returnWon / 10 * 10;
+		printf("기준 환율 : %.2f\n", exchangeRate);
+		printf("환전 결과\n");
+		printf("엔화 : %d\n", outputMoneyFinal);
+		printf("거스름돈: %d\n", returnWon);
+	
+	}else if (choice == 3){
+		
+		outputMoney = inputWon / exchangeRate;
+		outputMoneyFinal = outputMoney;
+		returnWon = outputMoney * 100;
+		returnWon = returnWon % 100;
+		returnWon = returnWon * exchangeRate / 100;
+		returnWon = returnWon / 10 * 10;
+		printf("기준 환율 : %.2f\n", exchangeRate);
+		printf("환전 결과\n");
+		printf("유로 : %d\n", outputMoneyFinal);
+		printf("거스름돈: %d\n", returnWon);
+	
+	}else if (choice == 4){
+		
+		outputMoney = inputWon / exchangeRate;
+		outputMoneyFinal = outputMoney;
+		returnWon = outputMoney * 100;
+		returnWon = returnWon % 100;
+		returnWon = returnWon * exchangeRate / 100;
+		returnWon = returnWon / 10 * 10;
+		printf("기준 환율 : %.2f\n", exchangeRate);
+		printf("환전 결과\n");
+		printf("위안 : %d\n", outputMoneyFinal);
+		printf("거스름돈: %d\n", returnWon);
+	
+	}else {
+		
+		outputMoney = inputWon / exchangeRate;
+		outputMoneyFinal = outputMoney;
+		returnWon = outputMoney * 100;
+		returnWon = returnWon % 100;
+		returnWon = returnWon * exchangeRate / 100;
+		returnWon = returnWon / 10 * 10;
+		printf("기준 환율 : %.2f\n", exchangeRate);
+		printf("환전 결과\n");
+		printf("파운드 : %d\n", outputMoneyFinal);
+		printf("거스름돈: %d\n", returnWon);	
+	}
+
+	int returnWon1000 = returnWon / 1000;
+	returnWon = returnWon - returnWon1000 * 1000;
+	int returnWon500 = returnWon / 500;
+	returnWon = returnWon - returnWon500 * 500;
+	int returnWon100 = returnWon / 100;
+	returnWon = returnWon - returnWon100 * 100;
+	int returnWon50 = returnWon / 50;
+	returnWon = returnWon - returnWon50 * 50;
+	int returnWon10 = returnWon / 10;
+	printf("1000원 %d개, 500원 %d개, 100원 %d개, 50원 : %d개, 10원 : %d개 \n", returnWon1000, returnWon500, returnWon100, returnWon50, returnWon10);
+	
+	return 0;
+}
