@@ -1,0 +1,183 @@
+int main(){
+	int year;
+	int month;
+	int MAX;
+			
+		printf("년도 입력 : ");
+		scanf("%d", &year);
+		printf("월 입력 : ");
+		scanf("%d", &month);
+		printf("\n==================== %d년 %d월 ====================\n", year, month);
+		printf("일\t월\t화\t수\t목\t금\t토\n");
+		
+		switch(month){
+				case 1:
+					MAX = 31;
+					break;
+				case 2:
+					if((year % 4 == 0) && year % 100 != 0 || year % 400 == 0){
+						MAX = 29;
+						break;
+					}else{
+						MAX = 28;
+						break;
+					}
+				case 3:
+					MAX = 31;
+					break;
+				case 4:
+					MAX = 30;
+					break;
+				case 5:
+					MAX = 31;
+					break;
+				case 6:
+					MAX = 30;
+					break;
+				case 7:
+					MAX = 31;
+					break;
+				case 8:
+					MAX = 31;
+					break;
+				case 9:
+					MAX = 30;
+					break;
+				case 10:
+					MAX = 31;
+					break;
+				case 11:
+					MAX = 30;
+					break;
+				case 12:
+					MAX = 31;
+					break;				 				 			
+		}
+		
+		int days = 0;
+		int dayOfweek;
+		
+		if((year % 4 == 0) && year % 100 != 0 || year % 400 == 0){
+			days = (year - 1900) % 365 + ((month - 1) * 31) + 1;
+		}else{
+			days = (year - 1900) % 365 + ((month - 1) * 31);
+		}
+		
+		dayOfweek = days % 7;
+		
+		printf("%d", dayOfweek);
+		
+		
+		const int WIDTH = 6;
+		
+		switch(dayOfweek){
+			case 0:
+				printf("\t");
+				for(int indexA = 1; indexA <= MAX; indexA++){
+					printf("%d\t", indexA);
+					if(indexA == 6){
+						printf("\n");
+					}
+					if(indexA == 13){
+						printf("\n");
+					}
+					if(indexA == 20){
+						printf("\n");
+					}
+					if(indexA == 27){
+						printf("\n");
+					}
+				}
+				break; 
+			case 1:
+				printf("\t\t");
+				for(int indexB = 1; indexB <= MAX; indexB++){
+					printf("%d\t", indexB);
+					if(indexB == 5){
+						printf("\n");
+					}
+					if(indexB == 12){
+						printf("\n");
+					}
+					if(indexB == 19){
+						printf("\n");
+					}
+					if(indexB == 26){
+						printf("\n");
+					}
+				}
+				break;
+			case 2:
+				printf("\t\t\t");
+				for(int indexC = 1; indexC <= MAX; indexC++){
+					printf("%d\t", indexC);
+					if(indexC == 4){
+						printf("\n");
+					}
+					if(indexC == 11){
+						printf("\n");
+					}
+					if(indexC == 18){
+						printf("\n");
+					}
+					if(indexC == 25){
+						printf("\n");
+					}
+				}
+				break;
+			case 3:
+				printf("\t\t\t\t");
+				for(int indexD = 1; indexD <= MAX; indexD++){
+					printf("%d\t", indexD);
+					if(indexD == 3){
+						printf("\n");
+					}
+					if(indexD == 10){
+						printf("\n");
+					}
+					if(indexD == 17){
+						printf("\n");
+					}
+					if(indexD == 24){
+						printf("\n");
+					}
+				}
+				break;
+			case 4:
+				printf("\t\t\t\t\t");
+				for(int indexE = 1; indexE <= MAX; indexE++){
+					printf("%d\t", indexE);
+					if(indexE == 2){
+						printf("\n");
+					}
+					if(indexE == 9){
+						printf("\n");
+					}
+					if(indexE == 16){
+						printf("\n");
+					}
+					if(indexE == 23){
+						printf("\n");
+					}
+				}
+				break;
+			case 5:
+				printf("\t\t\t\t\t\t");
+				for(int indexF = 1; indexF <= MAX; indexF++){
+					printf("%d\t", indexF);
+					if(indexF == 1){
+						printf("\n");
+					}
+					if(indexF == 8){
+						printf("\n");
+					}
+					if(indexF == 15){
+						printf("\n");
+					}
+					if(indexF == 22){
+						printf("\n");
+					}
+				}
+				break;
+		}
+}
