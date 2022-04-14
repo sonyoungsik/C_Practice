@@ -1,0 +1,124 @@
+#include<stdio.h>
+#include<time.h> 
+
+int main(){
+	
+	int menuNumber;
+	char registrationNumber[7];
+	int orderNumber;
+	int preferenceNumber;
+	
+	//주간권 고정값
+	const int weeklyTicket_Adult = 56000;	
+	const int weeklyTicket_Teenager = 47000;  
+	const int weeklyTicket_Child = 44000;
+	const int weeklyTicket_Older = 44000;
+
+	//야간권 고정값	
+	const int nightTicket_Adult = 46000;
+	const int nightTicket_Teenager = 40000;
+	const int nightTicket_Child = 37000;
+	const int nightTicket_Older = 37000; 
+  
+  	//현재 날짜 구하기
+	time_t t = time(NULL); 
+	struct tm tm = *localtime(&t);
+	
+	int resultPrice;
+	int year;
+	int month;
+	int day;
+	
+	int age;
+	
+	int rollback;
+	
+	do{
+		
+		printf("권종을 선택하세요.\n1. 주간권\n2. 야간권\n");
+		scanf("%d", &menuNumber);
+		printf("생년월일 6자리를 입력하세요\n");
+		scanf("%6s", &registrationNumber);
+		
+		year = 1900 + (10*(registrationNumber[0] - 48) + (registrationNumber[1] - 48));
+		month = 10 * (registrationNumber[2] - 48) + registrationNumber[3] - 48;
+		day = 10 * (registrationNumber[4] - 48) + registrationNumber[5] - 48;
+		
+		//만나이 계산 
+		if(month > tm.tm_mon + 1 && day > tm.tm_mday){
+			age = ((tm.tm_year + 1900) - year) - 1;
+		}
+		else{
+			age = ((tm.tm_year + 1900) - year);	
+		}
+		
+		//주간권, 야간권 구입에 따른 만나이별 가격(각종 우대사항 적용 전) 
+		if(menuNumber == 1){
+			if(age <= 64){
+				resultPrice = weeklyTicket_Adult;
+			}
+			else if(age <= 18){
+				resultPrice = weeklyTicket_Teenager;
+			}
+			else if(age <= 12){
+				resultPrice = weeklyTicket_Child;
+			}
+			else if(age <= 2){
+				resultPrice = 0;
+			}
+			else{
+				resultPrice = weeklyTicket_Older;
+			}	
+		}
+		else{
+			if(age <= 64){
+				resultPrice = nightTicket_Adult;
+			}
+			else if(age <= 18){
+				resultPrice = nightTicket_Teenager;
+			}
+			else if(age <= 12){
+				resultPrice = nightTicket_Child;
+			}
+			else if(age <= 2){
+				resultPrice = 0;
+			}
+			else{
+				resultPrice = nightTicket_Older;
+			}	
+		}
+		
+		printf("몇 개를 주문하시겠습니까? (최대 10개)\n");
+		scanf("%d", &orderNumber);
+		
+		printf("우대사항을 선택하세요.\n1. 없음 (나이 우대는 자동처리)\n2. 장애인\n3. 국가유공자\n4. 다자녀\n5. 임산부\n");
+		scanf("%d", &preferenceNumber);
+		
+		//우대사항별 티켓값 할인가 부여 
+		switch(preferenceNumber){
+			case 1:
+				resultPrice = resultPrice;
+				break;				
+			case 2:
+				resultPrice *= 1 - 0.4;
+				break;
+			case 3:
+				resultPrice *= 1 - 0.5;
+				break;
+			case 4:
+				resultPrice *= 1 - 0.2;
+				break;
+			case 5:
+				resultPrice *= 1 - 0.15;
+				break;
+		}
+	
+		printf("가격은 %d 원 입니다.\n감사합니다.\n", resultPrice * orderNumber);
+		printf("계속 발권하시겠습니까?\n1. 티켓 발권\n2. 종료\n");
+		scanf("%d", &rollback);
+	
+	}while(rollback == 1);
+	
+	printf("티켓 발권을 종료합니다. 감사합니다.");
+	
+}
