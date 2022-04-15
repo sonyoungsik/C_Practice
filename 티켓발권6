@@ -257,7 +257,7 @@ do{
 					if(orderCount >= 3){
 						discountPrice = countPriceNodiscount + countPriceNodiscount;
 						if((ticketSelect == 3) || (ticketSelect == 4)){
-							totalDiscountPrice = discountPrice + (countPriceYesdiscount / 2) * 0.5; 	
+							totalDiscountPrice = discountPrice + ((countPriceYesdiscount / 2) * 0.5); 	
 						}
 					}
 					else if(orderCount == 2){
